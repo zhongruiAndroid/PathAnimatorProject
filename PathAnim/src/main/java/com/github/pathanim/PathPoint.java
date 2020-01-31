@@ -5,7 +5,7 @@ import android.graphics.PointF;
 /***
  *   created by zhongrui on 2020/2/1
  */
-public class PathPoint {
+public class PathPoint  {
     public static final int MOVE = 0;
     public static final int LINE = 1;
     public static final int CUBIC = 2;
@@ -31,15 +31,13 @@ public class PathPoint {
         this.operation = operation;
         this.x = valueX;
         this.y = valueY;
-        control1X =x2;
-        control1Y =y2;
-        control2X =x3;
-        control2Y =y3;
+        control1X = x2;
+        control1Y = y2;
+        control2X = x3;
+        control2Y = y3;
     }
 
     public PointF getLastPoint() {
         return new PointF(x, y);
     }
-
-
 }

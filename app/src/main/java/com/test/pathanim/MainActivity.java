@@ -3,6 +3,7 @@ package com.test.pathanim;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -21,10 +22,20 @@ public class MainActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 PathAnimator animator=new PathAnimator();
-                animator.moveTo(100,200);
-                animator.lineTo(500,700);
-//                animator.cubicTo(300,200,400,600,600,700);
+
+                animator.lineTo(500,0);
+                animator.cubicTo(500,500,0,0,0,500);
+                animator.lineTo(700,500);
+
+//              animator.rLineTo(500,0);
+//              animator.rCubicTo(0,500,-500,0,-500,500);
+//              animator.rLineTo(500,0);
+
+                animator.setDuration(3300);
+                animator.setInterpolator(new LinearInterpolator());
                 animator.startAnimator(iv);
             }
         });
