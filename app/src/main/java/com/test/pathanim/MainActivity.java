@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 //              animator.rLineTo(500,0);
 //              animator.rCubicTo(0,500,-500,0,-500,500);
-//              animator.rLineTo(500,0);
+//              animator.rLineTo(700,0);
 
                 animator.setDuration(3000);
                 animator.setInterpolator(new LinearInterpolator());
