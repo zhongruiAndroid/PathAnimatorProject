@@ -39,7 +39,7 @@ public class PathAnimatorEvaluator implements TypeEvaluator<PathPoint> {
             x = endValue.x;
             y = endValue.y;
         }
-        PathPoint pathPoint = new PathPoint(PathPoint.MOVE, x, y);
+        PathPoint pathPoint = new PathPoint(endValue.operation, x, y);
         return pathPoint;
     }
 }
