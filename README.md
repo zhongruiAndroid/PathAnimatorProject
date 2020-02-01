@@ -37,6 +37,6 @@ animator.startAnimator(需要位移的view);
 | setRepeatMode      | 设置动画重复模式                         | PathAnimator.RESTART<br/>PathAnimator.REVERSE |
 | setStartDelay      | 设置动画延迟执行时间:毫秒                |                                               |
 | setInterpolator    | 设置插值器                               |                                               |
-| setCurrentPlayTime | 设置动画从哪个时间点开始                 |                                               |
+| setCurrentPlayTime | 设置动画从哪个时间点开始                 |       时间范围:[0,设置的duration]           |
 | setCurrentFraction | 设置动画从某个区间点开始,范围区间[0f,1f] |                                               |
 | startAnimator      | 开始执行动画                             |                                               |
