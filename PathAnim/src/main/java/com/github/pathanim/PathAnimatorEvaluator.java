@@ -10,9 +10,8 @@ public class PathAnimatorEvaluator implements TypeEvaluator<PathPoint> {
     public PathPoint evaluate(float fraction, PathPoint startValue, PathPoint endValue) {
         float x = 0;
         float y = 0;
-        if (endValue.operation == PathPoint.CUBIC) {
-            float temp = 1f - fraction;
-
+        float temp = 1f - fraction;
+        if (endValue.operation == PathPoint.CUBIC_3) {
             x = startValue.x * temp * temp * temp
                     + 3 * endValue.control1X * fraction * temp * temp
                     + 3 * endValue.control2X * fraction * fraction * temp
@@ -23,6 +22,15 @@ public class PathAnimatorEvaluator implements TypeEvaluator<PathPoint> {
                     + 3 * endValue.control1Y * fraction * temp * temp
                     + 3 * endValue.control2Y * fraction * fraction * temp
                     + endValue.y * fraction * fraction * fraction;
+
+        }else if (endValue.operation == PathPoint.CUBIC) {
+            x = startValue.x * temp  * temp
+                    + 2 * endValue.control1X * fraction * temp
+                    + endValue.x * fraction * fraction ;
+
+            y = startValue.y * temp  * temp
+                    + 2 * endValue.control1Y * fraction * temp
+                    + endValue.y * fraction * fraction ;
 
         } else if (endValue.operation == PathPoint.LINE) {
             x = (endValue.x - startValue.x) * fraction + startValue.x;

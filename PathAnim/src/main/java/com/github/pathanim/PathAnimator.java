@@ -65,12 +65,22 @@ public class PathAnimator {
     }
 
     public PathAnimator quadTo(float x1, float y1, float x2, float y2) {
-//        addListForOperation(x,y,PathPoint.CUBIC);
+        initMove();
+        addListForQuad(x1, y1, x2, y2 );
         return this;
     }
 
     public PathAnimator rQuadTo(float dx1, float dy1, float dx2, float dy2) {
-        return this;
+        if (pathPointList.isEmpty()) {
+            return quadTo(dx1, dy1, dx2, dy2);
+        }
+        PathPoint pathPoint = pathPointList.get(pathPointList.size() - 1);
+        return quadTo(
+                pathPoint.getLastPoint().x + dx1,
+                pathPoint.getLastPoint().y + dy1,
+                pathPoint.getLastPoint().x + dx2,
+                pathPoint.getLastPoint().y + dy2
+        );
     }
 
     public PathAnimator cubicTo(float x1, float y1, float x2, float y2, float x3, float y3) {
@@ -79,18 +89,18 @@ public class PathAnimator {
         return this;
     }
 
-    public PathAnimator rCubicTo(float x1, float y1, float x2, float y2, float x3, float y3) {
+    public PathAnimator rCubicTo(float dx1, float dy1, float dx2, float dy2, float dx3, float dy3) {
         if (pathPointList.isEmpty()) {
-            return cubicTo(x1, y1, x2, y2, x3, y3);
+            return cubicTo(dx1, dy1, dx2, dy2, dx3, dy3);
         }
         PathPoint pathPoint = pathPointList.get(pathPointList.size() - 1);
         return cubicTo(
-                pathPoint.getLastPoint().x + x1,
-                pathPoint.getLastPoint().y + y1,
-                pathPoint.getLastPoint().x + x2,
-                pathPoint.getLastPoint().y + y2,
-                pathPoint.getLastPoint().x + x3,
-                pathPoint.getLastPoint().y + y3
+                pathPoint.getLastPoint().x + dx1,
+                pathPoint.getLastPoint().y + dy1,
+                pathPoint.getLastPoint().x + dx2,
+                pathPoint.getLastPoint().y + dy2,
+                pathPoint.getLastPoint().x + dx3,
+                pathPoint.getLastPoint().y + dy3
         );
     }
 
@@ -100,7 +110,12 @@ public class PathAnimator {
     }
 
     private void addListForCubic(float x1, float y1, float x2, float y2, float x3, float y3) {
-        PathPoint pathPoint = new PathPoint(PathPoint.CUBIC, x3, y3, x1, y1, x2, y2);
+        PathPoint pathPoint = new PathPoint(x1, y1, x2, y2, x3, y3);
+        pathPointList.add(pathPoint);
+    }
+
+    private void addListForQuad(float x1, float y1, float x2, float y2) {
+        PathPoint pathPoint = new PathPoint(x1, y1, x2, y2);
         pathPointList.add(pathPoint);
     }
 
