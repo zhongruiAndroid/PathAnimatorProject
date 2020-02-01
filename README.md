@@ -2,7 +2,7 @@
 <img src="https://github.com/zhongruiAndroid/PathAnimatorProject/blob/master/screenshot/pathanim.gif" alt="image" >
 <br/>  
 
-##### 不规则路径位移属性动画
+### 不规则路径位移属性动画
 ```java
 
 PathAnimator animator=new PathAnimator();
