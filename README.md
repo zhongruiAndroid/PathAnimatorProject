@@ -15,9 +15,10 @@ animator.lineTo(700,500);
 //animator.rCubicTo(0,500,-500,0,-500,500);
 //animator.rLineTo(700,0);
 
-animator.setDuration(3000);
-animator.setInterpolator(new LinearInterpolator());
-animator.startAnimator(需要位移的view);
+ObjectAnimator anim = animator.createAnim(需要位移的view);
+anim.setDuration(3000);
+anim.setInterpolator(new LinearInterpolator());
+anim.start();
 ```
 #### canvas中(0,0)坐标是view所在坐标系的左上角
 #### 但是这里(0,0)坐标是view位移前的位置,也就是view初始位置在哪里,哪里就是(0,0)
@@ -30,13 +31,4 @@ animator.startAnimator(需要位移的view);
 
 
 
-| 用法和Animator一致 | 说明                                     |                                               |
-|--------------------|------------------------------------------|-----------------------------------------------|
-| setDuration        | 设置动画执行时间                         |                                               |
-| setRepeatCount     | 设置动画重复执行次数                     |                                               |
-| setRepeatMode      | 设置动画重复模式                         | PathAnimator.RESTART<br/>PathAnimator.REVERSE |
-| setStartDelay      | 设置动画延迟执行时间:毫秒                |                                               |
-| setInterpolator    | 设置插值器                               |                                               |
-| setCurrentPlayTime | 设置动画从哪个时间点开始                 |       时间范围:[0,设置的duration]           |
-| setCurrentFraction | 设置动画从某个区间点开始,范围区间[0f,1f] |                                               |
-| startAnimator      | 开始执行动画                             |                                               |
+
