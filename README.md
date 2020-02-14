@@ -31,4 +31,9 @@ anim.start();
 
 
 
+| [ ![Download](https://api.bintray.com/packages/zhongrui/mylibrary/PathAnim/images/download.svg) ](https://bintray.com/zhongrui/mylibrary/PathAnim/_latestVersion) | 最新版本号|
+|--------|----|
+```gradle
+implementation 'com.github:PathAnim:版本号'
+```
 
